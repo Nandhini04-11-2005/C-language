@@ -1,0 +1,37 @@
+#include <stdio.h>
+struct Bank 
+{
+int accNo;
+char name[50];
+float balance;
+}
+int main()
+{
+struct Bank customer;
+float deposit, withdraw;
+printf("Enter Account Number: ");
+scanf("%d", &customer.accNo);
+printf("Enter Name: ");
+scanf("%s", customer.name);
+printf("Enter Initial Balance: ");
+scanf("%f", &customer.balance);
+printf("\nEnter Deposit Amount: ");
+scanf("%f", &deposit);
+customer.balance = customer.balance + deposit;
+printf("Enter Withdraw Amount: ");
+scanf("%f", &withdraw);
+if(withdraw <= customer.balance) 
+{
+customer.balance = customer.balance - withdraw;
+printf("\nTransaction Successful!");
+ } 
+else 
+{
+printf("\nInsufficient Balance!");
+ }
+printf("\n\n--- Account Details ---\n");
+printf("Account No: %d\n", customer.accNo);
+printf("Name: %s\n", customer.name);
+printf("Available Balance: %.2f\n", customer.balance);
+return 0;
+}
