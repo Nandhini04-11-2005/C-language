@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 50
+struct Student 
+{
+    int roll;
+    char name[50];
+    int totalClasses;
+    int attendedClasses;
+};
+struct Student students[MAX];
+int count = 0;
+void addStudent() 
+{
+printf("\nEnter Roll No: ");
+scanf("%d", &students[count].roll);
+printf("Enter Name: ");
+scanf("%s", students[count].name);
+printf("Enter Total Classes: ");
+scanf("%d", &students[count].totalClasses);
+printf("Enter Attended Classes: ");
+scanf("%d", &students[count].attendedClasses);
+count++;
+printf("Student Added Successfully!\n");
+}
+void displayAttendance()
+{
+    if(count == 0)
+{
+        printf("\nNo Records Found!\n");
+        return;
+}
+printf("\n--- Attendance Details ---\n");
+for(int i = 0; i < count; i++) 
+{
+float percentage = (students[i].attendedClasses * 100.0) / students[i].totalClasses;
+printf("\nRoll No: %d", students[i].roll);
+printf("\nName: %s", students[i].name);
+printf("\nAttendance: %.2f%%\n", percentage);
+}
+}
+int main()
+{
+int choice;
+while(1)
+{
+        printf("\n\n1. Add Student");
+        printf("\n2. View Attendance");
+        printf("\n3. Exit");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+   switch(choice)
+{
+  case 1: addStudent(); break;
+  case 2: displayAttendance(); break;
+  case 3: return 0;
+  default: printf("Invalid Choice!");
+}
+}
+}
